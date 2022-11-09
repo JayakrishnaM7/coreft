@@ -1,0 +1,17 @@
+resilience4j: 
+  circuitbreaker: 
+    configs: 
+      default: 
+        automaticTransitionFromOpenToHalfOpenEnabled: true
+        failureRateThreshold: 50
+        minimumNumberOfCalls: 3
+        permittedNumberOfCallsInHalfOpenState: 3
+        recordExceptions: java.lang.Exception
+        waitDurationInOpenState: 5s
+    instances: 
+      mainService: 
+        baseConfig: default
+spring: 
+  jackson: 
+    serialization: 
+      WRITE_DATES_AS_TIMESTAMPS: false
